@@ -1,0 +1,35 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "MoviesDB",
+						"type": "DatasetReference"
+					},
+					"name": "MoviesDB"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
+					},
+					"name": "Sinkdata"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FilterYears"
+				},
+				{
+					"name": "AggregateimdbRatings"
+				}
+			],
+			"script": "\n\nsource(output(\n\t\tfn as string,\n\t\ttid as string,\n\t\ttitle as string,\n\t\twordsInTitle as string,\n\t\turl as string,\n\t\timdbRating as string,\n\t\tratingCount as string,\n\t\tduration as string,\n\t\tyear as string,\n\t\ttype as string,\n\t\tnrOfWins as string,\n\t\tnrOfNominations as string,\n\t\tnrOfPhotos as string,\n\t\tnrOfNewsArticles as string,\n\t\tnrOfUserReviews as string,\n\t\tnrOfGenre as string,\n\t\tAction as string,\n\t\tAdult as string,\n\t\tAdventure as string,\n\t\tAnimation as string,\n\t\tBiography as string,\n\t\tComedy as string,\n\t\tCrime as string,\n\t\tDocumentary as string,\n\t\tDrama as string,\n\t\tFamily as string,\n\t\tFantasy as string,\n\t\tFilmNoir as string,\n\t\tGameShow as string,\n\t\tHistory as string,\n\t\tHorror as string,\n\t\tMusic as string,\n\t\tMusical as string,\n\t\tMystery as string,\n\t\tNews as string,\n\t\tRealityTV as string,\n\t\tRomance as string,\n\t\tSciFi as string,\n\t\tShort as string,\n\t\tSport as string,\n\t\tTalkShow as string,\n\t\tThriller as string,\n\t\tWar as string,\n\t\tWestern as string,\n\t\tProp_44 as string,\n\t\tProp_45 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false) ~> MoviesDB\nMoviesDB filter(toInteger(year) >= 1921 && toInteger(year) <= 2010 && rlike(Comedy, '1')) ~> FilterYears\nFilterYears aggregate(groupBy(year = year),\n\timdbRating = avg(toInteger(ratingCount))) ~> AggregateimdbRatings\nAggregateimdbRatings sink(allowSchemaDrift: true,\n\tvalidateSchema: false) ~> Sinkdata"
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"name": "SqlServer1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=teklink-india.database.windows.net;initial catalog=tekind-dev-sqldb;user id=LSAXENA",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIlRFS0lORC1ERVYtQURGXzBjMzYyZDZlLWFlODktNDMxZi05NDczLWI5NDc2MTdlOWI2ZCINCn0="
+		}
+	}
+}

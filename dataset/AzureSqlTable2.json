@@ -1,0 +1,47 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "EMPID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "Salary",
+				"type": "decimal",
+				"precision": 13,
+				"scale": 2
+			},
+			{
+				"name": "DOB",
+				"type": "date"
+			},
+			{
+				"name": "ManagerID",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "LSAXENA",
+			"table": "employee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

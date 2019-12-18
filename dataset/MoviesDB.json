@@ -1,0 +1,209 @@
+{
+	"name": "MoviesDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "imdb.csv",
+				"fileSystem": "trailversion1"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "fn",
+				"type": "String"
+			},
+			{
+				"name": "tid",
+				"type": "String"
+			},
+			{
+				"name": "title",
+				"type": "String"
+			},
+			{
+				"name": "wordsInTitle",
+				"type": "String"
+			},
+			{
+				"name": "url",
+				"type": "String"
+			},
+			{
+				"name": "imdbRating",
+				"type": "String"
+			},
+			{
+				"name": "ratingCount",
+				"type": "String"
+			},
+			{
+				"name": "duration",
+				"type": "String"
+			},
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "type",
+				"type": "String"
+			},
+			{
+				"name": "nrOfWins",
+				"type": "String"
+			},
+			{
+				"name": "nrOfNominations",
+				"type": "String"
+			},
+			{
+				"name": "nrOfPhotos",
+				"type": "String"
+			},
+			{
+				"name": "nrOfNewsArticles",
+				"type": "String"
+			},
+			{
+				"name": "nrOfUserReviews",
+				"type": "String"
+			},
+			{
+				"name": "nrOfGenre",
+				"type": "String"
+			},
+			{
+				"name": "Action",
+				"type": "String"
+			},
+			{
+				"name": "Adult",
+				"type": "String"
+			},
+			{
+				"name": "Adventure",
+				"type": "String"
+			},
+			{
+				"name": "Animation",
+				"type": "String"
+			},
+			{
+				"name": "Biography",
+				"type": "String"
+			},
+			{
+				"name": "Comedy",
+				"type": "String"
+			},
+			{
+				"name": "Crime",
+				"type": "String"
+			},
+			{
+				"name": "Documentary",
+				"type": "String"
+			},
+			{
+				"name": "Drama",
+				"type": "String"
+			},
+			{
+				"name": "Family",
+				"type": "String"
+			},
+			{
+				"name": "Fantasy",
+				"type": "String"
+			},
+			{
+				"name": "FilmNoir",
+				"type": "String"
+			},
+			{
+				"name": "GameShow",
+				"type": "String"
+			},
+			{
+				"name": "History",
+				"type": "String"
+			},
+			{
+				"name": "Horror",
+				"type": "String"
+			},
+			{
+				"name": "Music",
+				"type": "String"
+			},
+			{
+				"name": "Musical",
+				"type": "String"
+			},
+			{
+				"name": "Mystery",
+				"type": "String"
+			},
+			{
+				"name": "News",
+				"type": "String"
+			},
+			{
+				"name": "RealityTV",
+				"type": "String"
+			},
+			{
+				"name": "Romance",
+				"type": "String"
+			},
+			{
+				"name": "SciFi",
+				"type": "String"
+			},
+			{
+				"name": "Short",
+				"type": "String"
+			},
+			{
+				"name": "Sport",
+				"type": "String"
+			},
+			{
+				"name": "TalkShow",
+				"type": "String"
+			},
+			{
+				"name": "Thriller",
+				"type": "String"
+			},
+			{
+				"name": "War",
+				"type": "String"
+			},
+			{
+				"name": "Western",
+				"type": "String"
+			},
+			{
+				"name": "Prop_44",
+				"type": "String"
+			},
+			{
+				"name": "Prop_45",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

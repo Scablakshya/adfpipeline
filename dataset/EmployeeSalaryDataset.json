@@ -1,0 +1,33 @@
+{
+	"name": "EmployeeSalaryDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ABS_copying",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "imdb.csv",
+				"container": "trailversion1"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "EmployeeId",
+				"type": "String"
+			},
+			{
+				"name": "BasePay",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

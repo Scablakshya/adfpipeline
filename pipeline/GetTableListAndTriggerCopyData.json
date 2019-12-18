@@ -1,0 +1,60 @@
+{
+	"name": "GetTableListAndTriggerCopyData",
+	"properties": {
+		"activities": [
+			{
+				"name": "LookupTablelist",
+				"description": "Retrieve the table list from Azure SQL database",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select [TABLE_SCHEMA], [TABLE_NAME] from [LSAXENA].[watermark]"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Trigger Copy",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "LookupTablelist",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "IterateAndCopySQLTables",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"Tablelist": {
+							"value": "@activity('LookupTablelist').output.value",
+							"type": "Expression"
+						}
+					}
+				}
+			}
+		],
+		"annotations": []
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
